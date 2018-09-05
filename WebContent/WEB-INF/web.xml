@@ -9,4 +9,23 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  	<servlet>
+		<description>Apache CXF Endpoint</description>
+		<display-name>cxf</display-name>
+		<servlet-name>cxf</servlet-name>
+		<servlet-class>it.unibo.services.UniboServices</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cxf</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+  	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<persistence-context-ref>
+		<persistence-context-ref-name>persistence/LogicalName</persistence-context-ref-name>
+		<persistence-unit-name>dbname</persistence-unit-name>
+	</persistence-context-ref>
 </web-app>

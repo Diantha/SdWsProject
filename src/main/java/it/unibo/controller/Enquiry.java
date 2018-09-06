@@ -7,8 +7,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import it.unibo.bean.UserBean;
-import it.unibo.dbentities.Credenziali;
-import it.unibo.dbentities.CredenzialiHome;
+import it.unibo.db.unibo.Credenziali;
+import it.unibo.db.unibo.CredenzialiHome;
 
 @Stateless
 public class Enquiry {
@@ -49,6 +49,7 @@ public class Enquiry {
 		
 		if(c!=null) {
 			//ritorna utente
+			System.out.println("Ciao");
 		}else {
 			 throw new Exception("Eccezione, utente non trovato");
 		}

@@ -14,7 +14,7 @@
 	</repositories>
 	
 	<properties>
-		<db-unibo.version>0.0.1-SNAPSHOT</db-unibo.version>
+		<db-unibo.version>0.0.2</db-unibo.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 	</properties>
@@ -52,6 +52,7 @@
 			<version>3.2</version>
 			<scope>provided</scope>
 		</dependency>
+
 
 	<dependency>
 		<groupId>db-unibo</groupId>

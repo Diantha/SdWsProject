@@ -12,7 +12,9 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
+	
 	<properties>
+		<db-unibo.version>0.0.1-SNAPSHOT</db-unibo.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 	</properties>
@@ -51,18 +53,11 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>db-unibo</groupId>
-			<artifactId>db-unibo</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-			</exclusions>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
+	<dependency>
+		<groupId>db-unibo</groupId>
+		<artifactId>db-unibo</artifactId>
+		<version>${db-unibo.version}</version>
+	</dependency>
 
 	</dependencies>
 </project>

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SoapSd</groupId>
 	<artifactId>SoapSd</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<repositories>
 		<repository>
@@ -12,15 +12,49 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-	
+
 	<properties>
-		<db-unibo.version>0.0.2</db-unibo.version>
+		<db-unibo.version>0.0.4</db-unibo.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 	</properties>
 
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<finalName>${project.artifactId}</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${jdk.source}</source>
+					<target>${jdk.target}</target>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<!-- PEZZO VECCHIO -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
@@ -38,6 +72,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -54,11 +89,12 @@
 		</dependency>
 
 
-	<dependency>
-		<groupId>db-unibo</groupId>
-		<artifactId>db-unibo</artifactId>
-		<version>${db-unibo.version}</version>
-	</dependency>
+		<dependency>
+			<groupId>db-unibo</groupId>
+			<artifactId>db-unibo</artifactId>
+			<version>${db-unibo.version}</version>
+		</dependency>
+
 
 	</dependencies>
 </project>

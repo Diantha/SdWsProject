@@ -7,8 +7,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import it.unibo.bean.UserBean;
-import it.unibo.db.unibo.Credenziali;
-import it.unibo.db.unibo.CredenzialiHome;
+import it.entities.db.unibodb.Credenziali;
+import it.entities.db.unibodb.CredenzialiHome;
 
 @Stateless
 public class Enquiry {

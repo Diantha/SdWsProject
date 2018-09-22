@@ -5,7 +5,7 @@
 	
 	<persistence-unit name="unibodb" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:/unibodb</jta-data-source> 
+		<jta-data-source>java:/uniboDS</jta-data-source> 
 		<jar-file>lib/db-unibo-${db-unibo.version}.jar</jar-file>
 		<properties>
 			<property name="hibernate.connection.release_mode" value="after_statement"	/>

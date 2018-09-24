@@ -2,12 +2,15 @@ package it.unibo.bean;
 
 /** Classe di mapping tra db e oggetto ritornato**/
 public class UserBean {
-	public int idUser;
-	public String firstname;
-	public String lastname;
-	public String taxCode;
-	public String birthDate;
-	public String gender;
+	private int idUser;
+	private String firstname;
+	private String lastname;
+	private String taxCode;
+	private String birthDate;
+	private String gender;
+	
+	public UserBean(){
+	}
 	
 	public int getIdUser() {
 		return idUser;

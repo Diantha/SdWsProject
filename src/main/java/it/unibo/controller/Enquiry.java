@@ -6,15 +6,19 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import it.unibo.bean.UserBean;
-import it.entities.db.unibodb.Credenziali;
 import it.entities.db.unibodb.CredenzialiHome;
+import it.entities.db.unibodb.Utente;
+import it.entities.db.unibodb.UtenteHome;
+import it.unibo.bean.UserBean;
 
 @Stateless
 public class Enquiry {
 
 	@EJB
 	CredenzialiHome cHome;
+	
+	@EJB
+	UtenteHome uHome;
 	
 	public void getUser(int idUser) throws Exception {
 		findUserById(idUser);
@@ -35,7 +39,14 @@ public class Enquiry {
 		findUserById(idUser);
 	}
 	
-	public void addUser() {
+	public void addUser(UserBean toAdd) {
+		Utente toInsert= new Utente();
+		toInsert.setCodiceFiscale(toAdd.getTaxCode());
+		toInsert.setCognome(toAdd.getLastname());
+		toInsert.setNome(toAdd.getFirstname());
+		uHome.persist(toInsert);
+		System.out.println(" Utente inserito");
+		
 		
 	}
 	
@@ -43,26 +54,31 @@ public class Enquiry {
 		findUserById(idUser);
 	}
 	
-	public void findUserById(Integer idUser) throws Exception {
+	public UserBean findUserById(Integer idUser) throws Exception {
 		
-		Credenziali c= cHome.findById(idUser);
+		//Credenziali c= cHome.findById(idUser);
+		Utente u = uHome.findById(idUser);
 		
-		if(c!=null) {
+		if(u!=null) {
 			//ritorna utente
-			System.out.println("Ciao");
+			System.out.println("Utente trovato");
+			UserBean ret= userMapping(u);
+			return ret;
 		}else {
 			 throw new Exception("Eccezione, utente non trovato");
 		}
 	}
 
-	public UserBean userMapping() {
+	public UserBean userMapping(Utente userFind) {
 		UserBean result = new UserBean();
-		result.setBirthDate("");
-		result.setFirstname("");
-		result.setLastname("");
-		result.setTaxCode("");
-		result.setBirthDate("");
-		result.setGender("");
+		String taxCode=userFind.getCodiceFiscale();
+		//List<String> infoFromTaxCode = getInfoFromTaxCode(taxCode);
+		result.setIdUser(userFind.getIdUtente());
+		result.setFirstname(userFind.getNome());
+		result.setLastname(userFind.getCognome());
+		result.setTaxCode(userFind.getCodiceFiscale());
+		//result.setBirthDate(infoFromTaxCode.get(0));
+		//result.setGender(infoFromTaxCode.get(1));
 		return result;
 	}
 	
@@ -70,5 +86,9 @@ public class Enquiry {
 		List<String> allTaxCodeInfo= new ArrayList<String>();
 		
 		return allTaxCodeInfo;
+	}
+
+	public void findUserByTaxCode(String taxCode) {
+		
 	}
 }

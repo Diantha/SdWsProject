@@ -1,6 +1,14 @@
 package it.unibo.bean;
 
+//import javax.xml.bind.annotation.XmlAccessorType;
+//import javax.xml.bind.annotation.XmlElement;
+//import javax.xml.bind.annotation.XmlElementWrapper;
+//import javax.xml.bind.annotation.XmlRootElement;
+
 /** Classe di mapping tra db e oggetto ritornato**/
+//@XmlRootElement(name = "userB")
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement(namespace = "it.unibo.bean")
 public class UserBean {
 	private int idUser;
 	private String firstname;
@@ -9,9 +17,11 @@ public class UserBean {
 	private String birthDate;
 	private String gender;
 	
-	public UserBean(){
+	public UserBean() {
+		
 	}
-	
+//	@XmlElementWrapper(name = "idUserList")
+//    @XmlElement(name = "idUser")
 	public int getIdUser() {
 		return idUser;
 	}

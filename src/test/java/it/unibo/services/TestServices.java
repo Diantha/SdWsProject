@@ -31,44 +31,10 @@ public class TestServices {
 		
 		String result= "";
 		try{
-			it.unibo.test.services.UserBean a =uniboServices.getUser(0);	
+			it.unibo.test.services.UserBean a =uniboServices.getUser(1);	
 			toSkip = false;
 			assertThat(null,not(equalTo(a.getIdUser())));
-			System.out.println("Richiesta trovata! Domicilio:" );// +result.getDomicilio());
-		} catch(Exception e){
-			System.out.println(e);
-			toSkip = true;
-			assertEquals("Errore inaspettato", "com.namirial.ws.stub.raservices.WSException: La ricerca non ha prodotto risultati", e.toString());
-		}
-	}
-	
-	@Test
-	public void addRequest(){
-		boolean toSkip=true;
-		//Richiesta result = new Richiesta();
-		String result= "";
-		try{
-		//	result=raServices.findRequestById("111", "AUAA2016112475485723");//ID_RICHIESTA);
-			toSkip = false;
-			assertThat(null,not(equalTo(result)));
-			System.out.println("Richiesta trovata! Domicilio:" );// +result.getDomicilio());
-		} catch(Exception e){
-			System.out.println(e);
-			toSkip = true;
-			assertEquals("Errore inaspettato", "com.namirial.ws.stub.raservices.WSException: La ricerca non ha prodotto risultati", e.toString());
-		}
-	}
-	
-	@Test
-	public void deleteRequest(){
-		boolean toSkip=true;
-		//Richiesta result = new Richiesta();
-		String result= "";
-		try{
-		//	result=raServices.findRequestById("111", "AUAA2016112475485723");//ID_RICHIESTA);
-			toSkip = false;
-			assertThat(null,not(equalTo(result)));
-			System.out.println("Richiesta trovata! Domicilio:" );// +result.getDomicilio());
+			System.out.println("Utente trovato!" +a.getFirstname());// +result.getDomicilio());
 		} catch(Exception e){
 			System.out.println(e);
 			toSkip = true;

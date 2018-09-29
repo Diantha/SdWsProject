@@ -15,6 +15,7 @@
 
 	<properties>
 		<db-unibo.version>0.0.4</db-unibo.version>
+		<soapclient.version>0.0.2</soapclient.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 	</properties>
@@ -93,6 +94,18 @@
 			<groupId>db-unibo</groupId>
 			<artifactId>db-unibo</artifactId>
 			<version>${db-unibo.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>SoapClientSd</groupId>
+			<artifactId>SoapClientSd</artifactId>
+			<version>${soapclient.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>3.1.8</version>
 		</dependency>
 
 

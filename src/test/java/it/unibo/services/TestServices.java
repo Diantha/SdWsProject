@@ -17,7 +17,7 @@ public class TestServices {
 	JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
 	
 	@Before
-	public void setConfiguration(){
+	public void setConfiguration(){ //in questo modo setto il mio client
 		SetInitialParameters a = new SetInitialParameters("http://localhost:8080/SoapSd/UniboServices",it.unibo.test.services.UniboServices.class);
 		proxyFactory=a.setProxyFactory(null, null);
 		uniboServices = (it.unibo.test.services.UniboServices) proxyFactory.create();

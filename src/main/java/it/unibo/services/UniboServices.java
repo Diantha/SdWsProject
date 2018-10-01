@@ -5,6 +5,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+import it.unibo.bean.CredentialBean;
 import it.unibo.bean.UserBean;
 import it.unibo.controller.Enquiry;
 
@@ -27,10 +28,10 @@ public class UniboServices {
 	}
 
 	@WebMethod
-	public UserBean getCredential(
+	public CredentialBean getCredential(
 			@WebParam(name="idUser") Integer idUser
 			) throws Exception {
-		return enq.findUserById(idUser);
+		return enq.getCredentialsFromUserId(idUser);
 	}
 
 	@WebMethod
@@ -41,23 +42,31 @@ public class UniboServices {
 	}
 
 	@WebMethod
-	public UserBean deleteUser(
-			@WebParam(name="idUser") Integer idUser
+	public void deleteUser(
+			@WebParam(name="idUser") int idUser
 			) throws Exception {
-		return enq.findUserById(idUser);
+		enq.deleteUser(idUser);
 	}
 
 	@WebMethod
-	public UserBean addCredentials(
-			@WebParam(name="idUser") Integer idUser
+	public void addCredentials(
+			@WebParam(name="idUser") Integer idUser,
+			@WebParam(name="cred") CredentialBean cred
 			) throws Exception {
-		return enq.findUserById(idUser);
+		enq.addCredentialToUser(idUser, cred);
 	}
 
 	@WebMethod
-	public UserBean deletCredentials(
-			@WebParam(name="idUser") Integer idUser
+	public void deletCredentialsFromIdUser(
+			@WebParam(name="idUser") int idUser
 			) throws Exception {
-		return enq.findUserById(idUser);
+		enq.deleteCredential(idUser);
+	}
+	
+	@WebMethod
+	public void deletCredentialsFromId(
+			@WebParam(name="idUser") int idCred
+			) throws Exception {
+		enq.deleteCredentialFromId(idCred);
 	}
 }

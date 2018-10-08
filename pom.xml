@@ -15,7 +15,7 @@
 
 	<properties>
 		<db-unibo.version>0.0.4</db-unibo.version>
-		<soapclient.version>0.0.2</soapclient.version>
+		<soapclient.version>0.0.3</soapclient.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 	</properties>

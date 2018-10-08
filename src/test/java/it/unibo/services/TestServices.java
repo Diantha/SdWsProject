@@ -25,22 +25,59 @@ public class TestServices {
 	
 	
 	@Test
-	public void findRequestById() throws Exception{
-		boolean toSkip=true;		
-		
-		
+	public void getFirstCredentials() throws Exception{
+
 		String result= "";
 		try{
-			it.unibo.test.services.UserBean a =uniboServices.getUser(1);	
-			toSkip = false;
+			it.unibo.test.services.UserBean a =uniboServices.getCredential(1);	
 			assertThat(null,not(equalTo(a.getIdUser())));
-			System.out.println("Utente trovato!" +a.getFirstname());// +result.getDomicilio());
+			System.out.println("Utente trovato!" +a.getFirstname());
 		} catch(Exception e){
 			System.out.println(e);
-			toSkip = true;
-			assertEquals("Errore inaspettato", "com.namirial.ws.stub.raservices.WSException: La ricerca non ha prodotto risultati", e.toString());
+			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
 		}
 	}
 	
+	
+	@Test
+	public void getFirstUser() throws Exception{
+
+		String result= "";
+		try{
+			it.unibo.test.services.UserBean a =uniboServices.getUser(1);	
+			assertThat(null,not(equalTo(a.getIdUser())));
+		} catch(Exception e){
+			System.out.println(e);
+			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
+		}
+	}
+	
+	
+	@Test
+	public void deleteUser() throws Exception{
+
+		String result= "";
+		try{
+			it.unibo.test.services.UserBean a =uniboServices.deleteUser(0);	
+			assertThat(null,not(equalTo(a.getIdUser())));
+		} catch(Exception e){
+			System.out.println(e);
+			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
+		}
+	}
+	
+	
+	@Test
+	public void deleteCredentials() throws Exception{
+
+		String result= "";
+		try{
+			it.unibo.test.services.UserBean a =uniboServices.deletCredentials(1);	
+			assertThat(null,not(equalTo(a.getIdUser())));
+		} catch(Exception e){
+			System.out.println(e);
+			assertEquals("Errore inaspettato", " ", e.toString());
+		}
+	}
 	
 }

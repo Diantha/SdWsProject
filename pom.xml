@@ -6,18 +6,20 @@
 	<artifactId>SoapSd</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
+	<!-- 
 	<repositories>
 		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-
+ -->
 	<properties>
 		<db-unibo.version>0.0.4</db-unibo.version>
 		<soapclient.version>0.0.3</soapclient.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<build>
@@ -32,6 +34,7 @@
 		</resources>
 
 		<plugins>
+		<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -41,12 +44,12 @@
 					<target>${jdk.target}</target>
 				</configuration>
 			</plugin>
-
+ -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>${maven-war-plugin.version}</version>
+				<version>3.0.0</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<archive>
@@ -64,6 +67,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<!--  
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
@@ -71,6 +75,7 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
+			-->
 		</plugins>
 	</build>
 

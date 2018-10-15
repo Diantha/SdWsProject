@@ -11,6 +11,7 @@ import org.junit.Test;
 
 
 
+
 public class TestServices {
 
 	it.unibo.test.services.UniboServices uniboServices=null;
@@ -29,9 +30,9 @@ public class TestServices {
 
 		String result= "";
 		try{
-			it.unibo.test.services.UserBean a =uniboServices.getCredential(1);	
-			assertThat(null,not(equalTo(a.getIdUser())));
-			System.out.println("Utente trovato!" +a.getFirstname());
+			it.unibo.test.services.CredentialBean a =uniboServices.getCredential(1);	
+			assertThat(null,not(equalTo(a.getIdCredenziale())));
+			System.out.println("Credenziale trovata!" +a.getUsername());
 		} catch(Exception e){
 			System.out.println(e);
 			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
@@ -58,8 +59,7 @@ public class TestServices {
 
 		String result= "";
 		try{
-			it.unibo.test.services.UserBean a =uniboServices.deleteUser(0);	
-			assertThat(null,not(equalTo(a.getIdUser())));
+			uniboServices.deleteUser(0);	
 		} catch(Exception e){
 			System.out.println(e);
 			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
@@ -72,8 +72,7 @@ public class TestServices {
 
 		String result= "";
 		try{
-			it.unibo.test.services.UserBean a =uniboServices.deletCredentials(1);	
-			assertThat(null,not(equalTo(a.getIdUser())));
+			uniboServices.deletCredentialsFromId(1);	
 		} catch(Exception e){
 			System.out.println(e);
 			assertEquals("Errore inaspettato", " ", e.toString());

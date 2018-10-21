@@ -8,12 +8,9 @@ import static org.junit.Assert.assertThat;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import it.unibo.bean.CredentialBean;
-
-
-
-
+@RunWith(OrderedRunner.class)
 public class TestServices {
 
 	it.unibo.test.services.UniboServices uniboServices=null;
@@ -28,9 +25,8 @@ public class TestServices {
 	
 	
 	@Test
+	@Order(order = 1)
 	public void getFirstCredentials() throws Exception{
-
-		String result= "";
 		try{
 			it.unibo.test.services.CredentialBean a =uniboServices.getCredential(1);	
 			assertThat(null,not(equalTo(a.getIdCredenziale())));
@@ -43,9 +39,8 @@ public class TestServices {
 	
 	
 	@Test
+	@Order(order = 2)
 	public void getFirstUser() throws Exception{
-
-		String result= "";
 		try{
 			it.unibo.test.services.UserBean a =uniboServices.getUser(1);	
 			assertThat(null,not(equalTo(a.getIdUser())));
@@ -55,24 +50,22 @@ public class TestServices {
 		}
 	}
 	
-	
 	@Test
-	public void deleteUser() throws Exception{
-
-		String result= "";
-		try{
-			uniboServices.deleteUser(0);	
-		} catch(Exception e){
-			System.out.println(e);
-			assertEquals("Errore inaspettato", "it.unibo.test.services.Exception_Exception: Eccezione, utente non trovato", e.toString());
-		}
+	@Order(order = 3)
+	public void addCredentials() throws Exception{
+		it.unibo.test.services.CredentialBean toAdd= new it.unibo.test.services.CredentialBean();
+		toAdd.setIdCredenziale(2);
+		toAdd.setIdUtente(1);
+		toAdd.setPassword("password");
+		toAdd.setUsername("paofl");
+		uniboServices.addCredentials(1, toAdd);
 	}
 	
-	
 	@Test
+	@Order(order = 4)
 	public void deleteCredentials() throws Exception{
 		try{
-			uniboServices.deletCredentialsFromId(1);	
+			uniboServices.deletCredentialsFromId(2);	
 		} catch(Exception e){
 			System.out.println(e);
 			assertEquals("Errore inaspettato", " ", e.toString());
@@ -80,12 +73,13 @@ public class TestServices {
 	}
 	
 	@Test
-	public void addCredentials() throws Exception{
-		it.unibo.test.services.CredentialBean toAdd= new it.unibo.test.services.CredentialBean();
-		toAdd.setIdCredenziale(1);
-		toAdd.setIdUtente(1);
-		toAdd.setPassword("password");
-		toAdd.setUsername("paofl");
-		uniboServices.addCredentials(1, toAdd);
+	@Order(order = 5)
+	public void deleteUser() throws Exception{
+		try{
+			uniboServices.deleteUser(0);	
+		} catch(Exception e){
+			System.out.println(e);
+			assertEquals("it.unibo.test.services.Exception_Exception: Eccezione, utente non trovato", e.toString());
+		}
 	}
 }

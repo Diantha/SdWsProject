@@ -16,7 +16,7 @@
 
 	<properties>
 		<db-unibo.version>0.0.5</db-unibo.version>
-		<soapclient.version>0.0.4</soapclient.version>
+		<soapclient.version>0.0.6</soapclient.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,7 +70,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.4</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

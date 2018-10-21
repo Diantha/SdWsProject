@@ -96,6 +96,7 @@ public class Enquiry {
 			//ritorna utente
 			System.out.println("Utente trovato");
 			Credenziali c = new Credenziali();
+			c.setIdCredenziale(input.getIdCredenziale());
 			c.setUtente(u);
 			c.setPassword(input.getPassword());
 			c.setUsername(input.getUsername());

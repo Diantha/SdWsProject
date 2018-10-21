@@ -6,7 +6,7 @@
 	<artifactId>SoapSd</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-	 
+
 	<repositories>
 		<repository>
 			<id>jitpack.io</id>
@@ -15,8 +15,8 @@
 	</repositories>
 
 	<properties>
-		<db-unibo.version>0.0.4</db-unibo.version>
-		<soapclient.version>0.0.3</soapclient.version>
+		<db-unibo.version>0.0.5</db-unibo.version>
+		<soapclient.version>0.0.4</soapclient.version>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,17 +34,9 @@
 		</resources>
 
 		<plugins>
-		<!-- 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>${jdk.source}</source>
-					<target>${jdk.target}</target>
-				</configuration>
-			</plugin>
- -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+				<version>${maven-compiler-plugin.version}</version> <configuration> <source>${jdk.source}</source> 
+				<target>${jdk.target}</target> </configuration> </plugin> -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -67,15 +59,9 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<!--  
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
-				</configuration>
-			</plugin>
-			-->
+			<!-- <plugin> <artifactId>maven-war-plugin</artifactId> <version>3.0.0</version> 
+				<configuration> <warSourceDirectory>WebContent</warSourceDirectory> </configuration> 
+				</plugin> -->
 		</plugins>
 	</build>
 
@@ -94,18 +80,23 @@
 			<scope>provided</scope>
 		</dependency>
 
-
+		<!-- <dependency> <groupId>db-unibo</groupId> <artifactId>db-unibo</artifactId> 
+			<version>${db-unibo.version}</version> </dependency> -->
+		
 		<dependency>
-			<groupId>db-unibo</groupId>
-			<artifactId>db-unibo</artifactId>
+			<groupId>com.github.Diantha</groupId>
+			<artifactId>database</artifactId>
 			<version>${db-unibo.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>SoapClientSd</groupId>
-			<artifactId>SoapClientSd</artifactId>
+			<!-- <groupId>SoapClientSd</groupId> -->
+			<groupId>com.github.Diantha</groupId>
+			<artifactId>wsStub</artifactId>
 			<version>${soapclient.version}</version>
 		</dependency>
+		
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>

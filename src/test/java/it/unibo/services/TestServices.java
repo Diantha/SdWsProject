@@ -9,6 +9,8 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.unibo.bean.CredentialBean;
+
 
 
 
@@ -19,7 +21,7 @@ public class TestServices {
 	
 	@Before
 	public void setConfiguration(){ //in questo modo setto il mio client
-		SetInitialParameters a = new SetInitialParameters("http://localhost:8080/SoapSd/UniboServices",it.unibo.test.services.UniboServices.class);
+		SetInitialParameters a = new SetInitialParameters("http://localhost:9080/SoapSd/UniboServices",it.unibo.test.services.UniboServices.class);
 		proxyFactory=a.setProxyFactory(null, null);
 		uniboServices = (it.unibo.test.services.UniboServices) proxyFactory.create();
 	}
@@ -35,7 +37,7 @@ public class TestServices {
 			System.out.println("Credenziale trovata!" +a.getUsername());
 		} catch(Exception e){
 			System.out.println(e);
-			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
+			assertEquals("Errore inaspettato", "it.unibo.test.services.Exception_Exception: Eccezione, all'utente non sono associate credenziali", e.toString());
 		}
 	}
 	
@@ -49,7 +51,7 @@ public class TestServices {
 			assertThat(null,not(equalTo(a.getIdUser())));
 		} catch(Exception e){
 			System.out.println(e);
-			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
+			assertEquals("Errore inaspettato", "it.unibo.test.services.Exception_Exception: Eccezione, utente non trovato", e.toString());
 		}
 	}
 	
@@ -62,15 +64,13 @@ public class TestServices {
 			uniboServices.deleteUser(0);	
 		} catch(Exception e){
 			System.out.println(e);
-			assertEquals("Errore inaspettato", " La ricerca non ha prodotto risultati", e.toString());
+			assertEquals("Errore inaspettato", "it.unibo.test.services.Exception_Exception: Eccezione, utente non trovato", e.toString());
 		}
 	}
 	
 	
 	@Test
 	public void deleteCredentials() throws Exception{
-
-		String result= "";
 		try{
 			uniboServices.deletCredentialsFromId(1);	
 		} catch(Exception e){
@@ -79,4 +79,13 @@ public class TestServices {
 		}
 	}
 	
+	@Test
+	public void addCredentials() throws Exception{
+		it.unibo.test.services.CredentialBean toAdd= new it.unibo.test.services.CredentialBean();
+		toAdd.setIdCredenziale(1);
+		toAdd.setIdUtente(1);
+		toAdd.setPassword("password");
+		toAdd.setUsername("paofl");
+		uniboServices.addCredentials(1, toAdd);
+	}
 }

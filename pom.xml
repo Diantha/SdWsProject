@@ -42,6 +42,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
+				<!-- This is a maven error. It says that it is expecting a web.xml file in your project because 
+				it is a web application, as indicated by <packaging>war</packaging>. However, for recent web applications a web.xml file is totally optional.  -->
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<archive>

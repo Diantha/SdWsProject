@@ -18,7 +18,7 @@ public class TestServices {
 	
 	@Before
 	public void setConfiguration(){ //in questo modo setto il mio client
-		SetInitialParameters a = new SetInitialParameters("http://localhost:9080/SoapSd/UniboServices",it.unibo.test.services.UniboServices.class);
+		SetInitialParameters a = new SetInitialParameters("http://localhost:9080/SoapSd/services/Uniboservices",it.unibo.test.services.UniboServices.class);
 		proxyFactory=a.setProxyFactory(null, null);
 		uniboServices = (it.unibo.test.services.UniboServices) proxyFactory.create();
 	}
@@ -54,7 +54,7 @@ public class TestServices {
 	@Order(order = 3)
 	public void addCredentials() throws Exception{
 		it.unibo.test.services.CredentialBean toAdd= new it.unibo.test.services.CredentialBean();
-		toAdd.setIdCredenziale(2);
+		//toAdd.setIdCredenziale(1);
 		toAdd.setIdUtente(1);
 		toAdd.setPassword("password");
 		toAdd.setUsername("paofl");

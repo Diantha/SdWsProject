@@ -65,7 +65,7 @@ public class UniboServices {
 	
 	@WebMethod
 	public void deletCredentialsFromId(
-			@WebParam(name="idUser") int idCred
+			@WebParam(name="idCred") int idCred
 			) throws Exception {
 		enq.deleteCredentialFromId(idCred);
 	}

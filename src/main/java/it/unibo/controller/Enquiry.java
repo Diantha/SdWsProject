@@ -65,6 +65,9 @@ public class Enquiry {
 		if(u.getCredenzialis().isEmpty()) {
 			throw new Exception("Eccezione, all'utente non sono associate credenziali");
 		}
+		System.out.println("Utente con credenziali : "+u.getCredenzialis().size());
+		System.out.println("" +u.getCredenzialis().iterator().next().getIdCredenziale());
+		
 		Iterator a = u.getCredenzialis().iterator();
 		Credenziali c = (Credenziali) a.next();
 		cHome.remove(c);
@@ -72,8 +75,8 @@ public class Enquiry {
 		
 	}
 	
-	public void deleteCredentialFromId(int idUser) throws Exception {
-		Credenziali c = cHome.findById(idUser);
+	public void deleteCredentialFromId(int idCred) throws Exception {
+		Credenziali c = cHome.findById(idCred);
 		cHome.remove(c);
 		System.out.println(" credenziali rimosse con successo");
 		
@@ -96,7 +99,7 @@ public class Enquiry {
 			//ritorna utente
 			System.out.println("Utente trovato");
 			Credenziali c = new Credenziali();
-			c.setIdCredenziale(input.getIdCredenziale());
+			//c.setIdCredenziale(input.getIdCredenziale());
 			c.setUtente(u);
 			c.setPassword(input.getPassword());
 			c.setUsername(input.getUsername());

@@ -10,9 +10,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import it.unibo.test.services.Exception_Exception;
+
 @RunWith(OrderedRunner.class)
 public class TestServices {
-
+	int credenTodelete=0;
 	it.unibo.test.services.UniboServices uniboServices=null;
 	JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
 	
@@ -60,12 +62,14 @@ public class TestServices {
 		toAdd.setUsername("paofl");
 		uniboServices.addCredentials(1, toAdd);
 	}
-	
+
 	@Test
 	@Order(order = 4)
-	public void deleteCredentials() throws Exception{
+	public void deleteCredentialsFromIdUser() throws Exception{
+		credenTodelete=uniboServices.getCredential(1).getIdCredenziale();
+		System.out.println(" "+credenTodelete);
 		try{
-			uniboServices.deletCredentialsFromId(2);	
+			uniboServices.deletCredentialsFromId(credenTodelete);	
 		} catch(Exception e){
 			System.out.println(e);
 			assertEquals("Errore inaspettato", " ", e.toString());
